@@ -24,9 +24,10 @@ public class ScannerDemo {
          * Eclipse's console. This may change depending on the environment where
          * are running your program or the input/output stream you are using.
          */
-
         
-        
+        Scanner scan = new Scanner(System.in);
+    	
+    	
         /*
          * 2. Use a syso to ask the user for their name and then use the Scanner
          * created in step 1 to take in the user's name as a String.
@@ -42,7 +43,8 @@ public class ScannerDemo {
          * String variable.
          */
 
-        
+        System.out.println("Whats your name");
+       String s =  scan.nextLine();
         
         /*
          * 3. Ask the user for their age in the console. Then use the Scanner to
