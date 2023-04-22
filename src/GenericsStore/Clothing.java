@@ -1,4 +1,4 @@
-package _02_Generics_Store;
+package GenericsStore;
 
 import java.util.Random;
 

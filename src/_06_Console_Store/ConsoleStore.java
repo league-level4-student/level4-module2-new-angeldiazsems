@@ -1,6 +1,8 @@
 package _06_Console_Store;
 
-public class ConsoleStore {
+import GenericsStore.NonFood;
+
+public class ConsoleStore{
 
     /*
      * Write a program that simulates shopping in a store using the Scanner and
@@ -37,7 +39,7 @@ public class ConsoleStore {
      */
 
     public static void main(String[] args) {
-
+    	GenericsStore.Cart<NonFood> test = new GenericsStore.Cart<NonFood>();
     }
 
 }

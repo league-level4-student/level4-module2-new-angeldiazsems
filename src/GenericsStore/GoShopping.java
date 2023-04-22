@@ -1,4 +1,4 @@
-package _02_Generics_Store;
+package GenericsStore;
 
 public class GoShopping {
 	// 1. Look through other classes to see how they all interact.

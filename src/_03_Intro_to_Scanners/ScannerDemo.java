@@ -2,6 +2,8 @@ package _03_Intro_to_Scanners;
 
 import java.util.Scanner;
 
+import org.junit.jupiter.params.shadow.com.univocity.parsers.conversions.IntegerConversion;
+
 public class ScannerDemo {
 
     /*
@@ -43,8 +45,8 @@ public class ScannerDemo {
          * String variable.
          */
 
-        System.out.println("Whats your name");
-       String s =  scan.nextLine();
+        System.out.println("Whats your age");
+        int age = scan.nextInt();
         
         /*
          * 3. Ask the user for their age in the console. Then use the Scanner to
@@ -66,7 +68,13 @@ public class ScannerDemo {
 
         // 5.) Print the user's data to the console nicely formatted.
 
+        System.out.println("what is your favorite decimal");
+        double decimal = scan.nextDouble();
+        System.out.println("what is your favorite animal");
+        String animal = scan.next();
         
+        System.out.println(age+" year old kid says he will eat "+decimal+" pounds of "+animal+" meat for a tic tok prank");
+        scan.close();
         
         /*
          * 6.) Close your scanner to avoid memory leaks.
