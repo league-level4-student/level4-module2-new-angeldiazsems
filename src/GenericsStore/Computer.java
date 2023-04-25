@@ -4,9 +4,11 @@ import java.util.Random;
 
 import javax.swing.JLabel;
 
-public class Toy extends NonFood {
-	public Toy() {
-		this.item = new Random().nextBoolean() ? "toy1.jpeg" : "toy2.jpeg";
+public class Computer extends NonFood{
+	public Computer() {
+		this.item = new Random().nextBoolean() ? "" : "";
+		
+		
 	}
 
 	@Override

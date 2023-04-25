@@ -52,9 +52,11 @@ public class TernaryOperatorDemo {
 		do {
 			System.out.println("What season is ti?");
 			answer = scan.nextLine();
-			answer = answer == "duck season" ? "FIRE!" : "rabbit season";
-		} while (answer != "FIRE!");
+			answer = answer.equals("duck season") ? "FIRE!" : "rabbit season";
+		} while (!answer.equals("FIRE!"));
 
+		System.out.println(answer);
+		scan.close();
 		// varible = condition ? expression1 : expression2 ;
 
 		/*
