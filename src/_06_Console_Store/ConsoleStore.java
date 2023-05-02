@@ -3,6 +3,11 @@ package _06_Console_Store;
 import java.util.Scanner;
 
 import GenericsStore.Cart;
+import GenericsStore.Clothing;
+import GenericsStore.Dog;
+import GenericsStore.Computer;
+import GenericsStore.WaterBottle;
+import GenericsStore.Toy;
 import GenericsStore.NonFood;
 
 public class ConsoleStore {
@@ -44,21 +49,43 @@ public class ConsoleStore {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		Cart<NonFood> cart = new Cart<NonFood>();
+		System.out.println("WHATS YOUR NAME?!?!??!");
+		String name = scan.nextLine();
 		System.out.println(
 				"HELLO AND WECLOME TO TOYS R US. I'M MRBEAST AND I'M GOING TO BE GIVING YOU $1000 TO BUY WHAEVTER YOU WANT");
 		System.out.println("TOY R US IS CURRENTLY SELLING: CLOTHING, TOYS, DOGS, COMPUTERS, AND WATER");
 		String decision = "";
 		String item = "";
+		
 		do {
 			System.out.println("DO YOU WANT TO ADD TO CART, REMOVE FROM CART, VIEW, OR CHECK OUT?(ex: view dogs");
 			decision = scan.next();
 			item = scan.next();
 			
 			if (decision.equals("add")) {
-				add(item, cart);
+				if(item == "clothing") {
+					Clothing c = new Clothing();
+					add(c , cart);
+				}
+				else if(item == "toys") {
+					Toy toy = new Toy();
+					add(toy, cart);
+				}
+				else if(item == "dogs"){
+					Dog dog = new Dog();
+					add(dog, cart);
+				}
+				else if(item == "computers") {
+					Computer computer = new Computer();
+					add(computer, cart);
+				}
+				else {
+					WaterBottle water = new WaterBottle();
+					add(water, cart);
+				}
 			}
 			else if(decision.equals("remove")) {
-				remove(item);
+				remove(item, cart);
 			}
 			else {
 				view(item);
@@ -66,14 +93,28 @@ public class ConsoleStore {
 			
 		} while (!decision.equals("check"));
 
+		
+		System.out.println("----------------------------------------");
+		System.out.println("CHECKING OUT...");
+		for(int i = 0; i < cart.length(); i++) {
+			System.out.println(cart.toString()+"");
+		}
+		System.out.println();
+		
+		cart.showCart();
+		
+		
+		
+		
 	}
 
 	public static void add(NonFood item, Cart cart) {
 		cart.add(item);
-    	
+		System.out.println(item.toString()+" HAS BEEN ADDED TO YOUR CART");
     }
-	public static void remove(String item) {
-    	
+	public static void remove(String item, Cart cart) {
+    	cart.remove(item);
+    	System.out.println(item+" HAS BEEN REMOVED FROM YOUR CART");
     	
     }
 	public static void view(String item) {
