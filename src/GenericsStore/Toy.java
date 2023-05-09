@@ -6,12 +6,24 @@ import javax.swing.JLabel;
 
 public class Toy extends NonFood {
 	public Toy() {
-		this.item = new Random().nextBoolean() ? "toy1.jpeg" : "toy2.jpeg";
-	}
+		if(new Random().nextBoolean()) {
+			this.item = "toy1.jpeg";
+		}
+		else {
+			this.item = "toy2.jpeg";
+		}	}
 
 	@Override
 	public JLabel getNonFood() {
 		// TODO Auto-generated method stub
 		return new JLabel(loadImage(this.item));
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Toys";
+		
+	}
+	
 }

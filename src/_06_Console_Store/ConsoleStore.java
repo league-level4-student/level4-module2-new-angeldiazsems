@@ -2,6 +2,9 @@ package _06_Console_Store;
 
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import GenericsStore.Cart;
 import GenericsStore.Clothing;
 import GenericsStore.Dog;
@@ -47,6 +50,8 @@ public class ConsoleStore {
 	 */
 
 	public static void main(String[] args) {
+
+		
 		Scanner scan = new Scanner(System.in);
 		Cart<NonFood> cart = new Cart<NonFood>();
 		System.out.println("WHATS YOUR NAME?!?!??!");
@@ -56,39 +61,47 @@ public class ConsoleStore {
 		System.out.println("TOY R US IS CURRENTLY SELLING: CLOTHING, TOYS, DOGS, COMPUTERS, AND WATER");
 		String decision = "";
 		String item = "";
+		int money = 1000;
 		
 		do {
 			System.out.println("DO YOU WANT TO ADD TO CART, REMOVE FROM CART, VIEW, OR CHECK OUT?(ex: view dogs");
 			decision = scan.next();
 			item = scan.next();
 			
+			
 			if (decision.equals("add")) {
-				if(item == "clothing") {
+				if(item.equals("clothing")) {
 					Clothing c = new Clothing();
 					add(c , cart);
 				}
-				else if(item == "toys") {
+				else if(item.equals("toys")) {
 					Toy toy = new Toy();
 					add(toy, cart);
 				}
-				else if(item == "dogs"){
+				else if(item.equals("dogs")){
 					Dog dog = new Dog();
 					add(dog, cart);
 				}
-				else if(item == "computers") {
+				else if(item.equals("computers")) {
 					Computer computer = new Computer();
 					add(computer, cart);
 				}
-				else {
+				else if(item.equals("water")){
 					WaterBottle water = new WaterBottle();
 					add(water, cart);
 				}
+				else {
+					
+				}
+
 			}
 			else if(decision.equals("remove")) {
 				remove(item, cart);
 			}
 			else {
-				view(item);
+				if(decision.equals("view")){
+					view(item);
+				}
 			}
 			
 		} while (!decision.equals("check"));
@@ -97,15 +110,85 @@ public class ConsoleStore {
 		System.out.println("----------------------------------------");
 		System.out.println("CHECKING OUT...");
 		for(int i = 0; i < cart.length(); i++) {
-			System.out.println(cart.toString()+"");
+			
+			if (cart.cart[i] instanceof Clothing ) {
+
+				money -=30;
+				if(money < 0) {
+					System.out.println("you can't afford the rest of the items have. do you want to return them?(y/n)");
+					String answer = scan.next();
+					if(answer.equals("y")) {
+						money+=30;
+						break;
+					}
+				}
+				System.out.println("Bought clothing for $30");			
+			}
+			else if(cart.cart[i] instanceof Toy) {
+
+				money -=50;
+				if(money < 0) {
+					System.out.println("you can't afford the rest of the items have. do you want to return them?(y/n)");
+					String answer = scan.next();
+					if(answer.equals("y")) {
+						money+=50;
+						break;
+					}
+				}
+				System.out.println("Bought a toy for $50");
+
+			}
+			else if(cart.cart[i] instanceof Dog) {
+
+				money -=5;
+				if(money < 0) {
+					System.out.println("you can't afford the rest of the items have. do you want to return them?(y/n)");
+					String answer = scan.next();
+					if(answer.equals("y")) {
+						money+=5;
+						System.out.println("returned");
+						break;
+					}
+				}
+				System.out.println("Bought a dog for $5");
+
+			}
+			else if(cart.cart[i] instanceof Computer) {
+
+				money -=250;
+				if(money < 0) {
+					System.out.println("you can't afford the rest of the items have. do you want to return them?(y/n)");
+					String answer = scan.next();
+					if(answer.equals("y")) {
+						money+=250;
+						break;
+					}
+				}
+				System.out.println("Bought a computer for $250");
+
+			}
+			else if(cart.cart[i] instanceof WaterBottle) {
+
+				money -= 1;
+				if(money < 0) {
+					System.out.println("you can't afford the rest of the items have. do you want to return them?(y/n)");
+					String answer = scan.next();
+					if(answer.equals("y")) {
+						money +=1;
+						break;
+					}
+				}
+				System.out.println("Bought water for $1");
+			}
+			else {
+				
+			}
+			
 		}
-		System.out.println();
+		System.out.println("All bought by "+name);
 		
 		cart.showCart();
-		
-		
-		
-		
+
 	}
 
 	public static void add(NonFood item, Cart cart) {
@@ -124,7 +207,7 @@ public class ConsoleStore {
 	    	System.out.println("YOU SEE THAT "+item+" COST $"+cost);
 		}
 		else if(item.equals("toys")) {
-			cost = 100;
+			cost = 50;
 	    	System.out.println("YOU SEE THAT "+item+" COST $"+cost);
 
 		}
@@ -133,7 +216,7 @@ public class ConsoleStore {
 	    	System.out.println("YOU SEE THAT "+item+" COST $"+cost);
 		}
 		else if(item.equals("computers")) {
-			cost = 300;
+			cost = 250;
 	    	System.out.println("YOU SEE THAT "+item+" COST $"+cost);
 
 		}

@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("unchecked")
 public class Cart<T> {
-	private T[] cart;
+	public T[] cart;
 
 	public Cart() {
-		cart = (T[]) new NonFood[10];
+		cart = (T[]) new NonFood[100];
 	}
 
 	// Adds an item to the cart
@@ -27,7 +27,7 @@ public class Cart<T> {
 				return;
 			}
 		}
-		JOptionPane.showMessageDialog(null, "Your cart is full!\nNo more than 10 items");
+		JOptionPane.showMessageDialog(null, "Your cart is full!\nNo more than 100 items");
 	}
 
 	public void remove(String thing) {
@@ -63,6 +63,7 @@ public class Cart<T> {
 			}
 
 	}
+	
 
 	// Displays everything currently in the cart
 	public void showCart() {

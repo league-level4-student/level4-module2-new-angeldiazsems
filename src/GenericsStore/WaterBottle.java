@@ -16,4 +16,12 @@ public class WaterBottle extends NonFood{
 		// TODO Auto-generated method stub
 		return new JLabel(loadImage(this.item));
 	}
+	
+	@Override
+	public String toString() {
+		return "Water";
+		
+	}
+	
+	
 }
